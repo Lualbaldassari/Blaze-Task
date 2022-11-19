@@ -1,6 +1,8 @@
 import React, { useState, useEffect} from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom';
+import styles from  "../styles.css";
+
 
 const Products = () => {
     const [products,setProducts] = useState([])
@@ -21,20 +23,37 @@ const Products = () => {
 
   return (
     <div>
-      <h1>Products</h1>
       <div className="products">
-        {products.map((product) => (
-          <div className="product" key={product.id}>
-            <p>{product.id}</p>
-            <p>{product.name}</p>
-            <p>{product.category}</p>
-            <p>{product.price}</p>
-            <p>{product.status}</p>
-            <p>{product.actions}</p>
-          </div>
-        ))}
+        <table className="table">
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {products.map((product) => (
+              <tr>
+                <td>{product.id}</td>
+                <td>{product.name}</td>
+                <td>{product.category}</td>
+                <td>{product.price}</td>
+                <td>{product.status}</td>
+                <td>{product.actions}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      <button><Link to="/add">Create Product</Link></button>
+
+      <button className="button">
+        <Link to="/add">Create Product</Link>
+      </button>
     </div>
   );
 };
