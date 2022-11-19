@@ -24,6 +24,24 @@ app.get("/products", (req, res) => {
 });
 
 
+app.post("/products", (req, res) => {
+  const q = "INSERT INTO products (`name`,`category`,`price`,`status`,`actions`) VALUES (?)";
+  const values = [
+    "name from backend",
+    "category from backend",
+    100,
+    "status from backend",
+    "actions from backend",
+  ];
+
+  db.query(q, [values], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("Product has been created successfully");
+  });
+});
+
+
+
 
 
 app.listen(8800, ()=>{
