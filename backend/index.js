@@ -47,6 +47,33 @@ app.post("/products", (req, res) => {
 
 
 
+app.get("/orders", (req, res) => {
+  const q = "SELECT * FROM orders";
+  db.query(q, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
+
+app.post("orders", (req, res) => {
+  const q =
+    "INSERT INTO orders (`consumer`,`status`,`date`,`total`,`actions`) VALUES (?)";
+  const values = [
+    req.body.consumer,
+    req.body.status,
+    req.body.date,
+    req.body.total,
+    req.body.actions,
+  ];
+
+  db.query(q, [values], (err, data) => {
+    if (err) return res.json(console.log);
+    return res.json("The order has been created successfully");
+  });
+});
+
+
 
 
 app.listen(8800, ()=>{
