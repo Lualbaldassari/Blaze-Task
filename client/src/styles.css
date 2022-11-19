@@ -39,3 +39,12 @@
     text-shadow: 1px 1px 1px #fff;
 }
 
+.product {
+    position:absolute; left:80px; top:20px; 
+}
+
+.order {
+   
+    position:absolute; left:200px; top:20px; 
+}
+

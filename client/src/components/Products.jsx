@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom';
 import   "../styles.css";
+import NavBar from './NavBar';
 
 
 const Products = () => {
@@ -54,6 +55,11 @@ const Products = () => {
       <button className="button">
         <Link to="/add">Create Product</Link>
       </button>
+
+
+      <NavBar/>
+
+
     </div>
   );
 };

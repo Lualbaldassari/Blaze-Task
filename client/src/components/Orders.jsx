@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles.css";
+import NavBar from "./NavBar";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -51,6 +52,10 @@ const Orders = () => {
       <button className="button">
         <Link to="/add">Create Order</Link>
       </button>
+
+      <NavBar/>
+
+
     </div>
   );
 };
