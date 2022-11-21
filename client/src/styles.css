@@ -41,10 +41,12 @@
 
 .product {
     position:absolute; left:80px; top:20px; 
+    background-color: #336B6B;
 }
 
 .order {
    
     position:absolute; left:200px; top:20px; 
+    background-color: #DDEEEE;
 }
 
