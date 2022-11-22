@@ -58,7 +58,23 @@ app.delete("/products/:id", (req,res) =>{
 
 })
 
+app.put("/products/:id", (req, res) => {
+  const productId = req.params.id;
+  const q = " UPDATE  products SET `name`= ?, `category` = ?, `price`= ?, `status` = ? WHERE id = ? ";
 
+  const values = [
+    req.body.name,
+    req.body.category,
+    req.body.price,
+    req.body.status,
+  ];
+
+
+  db.query(q, [...values, productId], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("Books has been updated successfully");
+  });
+});
 
 
 

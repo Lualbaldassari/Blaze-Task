@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 20px;
+  width: 50%;
+  border: 3px solid #069;
+  padding: 10px;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #069;
+  color: white;
+}
+
+.btn:hover {
+  background-color: rgb(60, 108, 240);
+  color: black;
+}
