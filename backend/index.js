@@ -30,13 +30,13 @@ app.get("/products", (req, res) => {
 
 
 app.post("/products", (req, res) => {
-  const q = "INSERT INTO products (`name`,`category`,`price`,`status`,`actions`) VALUES (?)";
+  const q = "INSERT INTO products (`name`,`category`,`price`,`status`) VALUES (?)";
   const values = [
     req.body.name,
     req.body.category,
     req.body.price,
     req.body.status,
-    req.body.actions,
+    
   ];
 
   db.query(q, [values], (err, data) => {
@@ -44,6 +44,29 @@ app.post("/products", (req, res) => {
     return res.json("Product has been created successfully");
   });
 });
+
+
+app.delete("/products/:id", (req,res) =>{
+  const productId = req.params.id;
+  const q =" DELETE FROM products WHERE id = ?"
+
+  db.query(q, [productId], (err,data) =>{
+    if (err) return res.json(err);
+    return res.json("Books has been deleted successfully");
+  })
+
+
+})
+
+
+
+
+
+
+
+
+
+
 
 
 

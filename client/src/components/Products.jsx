@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom';
-import   "../styles.css";
+
 import NavBar from './NavBar';
 
 
@@ -22,6 +22,17 @@ const Products = () => {
       }, []);
 
 
+      const handleDelete = async (id)=>{
+        try {
+          await axios.delete("http://localhost:8800/products/" +id);
+          window.location.reload();
+        } catch (err) {
+          console.log(err)
+        }
+      }
+
+
+
   return (
     <div>
       <div className="products">
@@ -34,6 +45,11 @@ const Products = () => {
               <th>Price</th>
               <th>Status</th>
               <th>Actions</th>
+              <th>
+                <button>
+                  <Link to="/add">Add</Link>
+                </button>
+              </th>
             </tr>
           </thead>
 
@@ -45,21 +61,17 @@ const Products = () => {
                 <td>{product.category}</td>
                 <td>{product.price}</td>
                 <td>{product.status}</td>
-                <td>{product.actions}</td>
+                <td>
+                  <button onClick={() => handleDelete(product.id) }>Delete</button>
+                  <button><Link to={`/update/${product.id}`}>Edit</Link></button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <button className="button">
-        <Link to="/add">Create Product</Link>
-      </button>
-
-
-      <NavBar/>
-
-
+      <NavBar />
     </div>
   );
 };
