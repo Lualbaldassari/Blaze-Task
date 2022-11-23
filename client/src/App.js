@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 import Add from "./components/Add";
+import AddOrder from "./components/AddOrder";
 import LandingPage from "./components/LandingPage";
 import Orders from "./components/Orders";
 import Products from "./components/Products";
@@ -18,6 +19,7 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/add/" element={<Add />} />
           <Route path="/update/:id" element={<Update />} />
+          <Route path="/addOrder/" element={<AddOrder />} />
         </Routes>
       </BrowserRouter>
     </div>

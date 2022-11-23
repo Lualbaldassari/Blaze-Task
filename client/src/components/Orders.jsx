@@ -31,6 +31,11 @@ const Orders = () => {
               <th>Date</th>
               <th>Total</th>
               <th>Actions</th>
+              <th>
+                <button>
+                  <Link to="/addOrder">Create Order</Link>
+                </button>
+              </th>
             </tr>
           </thead>
 
@@ -42,20 +47,18 @@ const Orders = () => {
                 <td>{order.status}</td>
                 <td>{order.date}</td>
                 <td>{order.total}</td>
-                <td>{order.actions}</td>
+                <td>
+                  <button>Edit</button>
+                  <button>Delete</button>
+                </td>
+                
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <button className="button">
-        <Link to="/add">Create Order</Link>
-      </button>
-
-      <NavBar/>
-
-
+      <NavBar />
     </div>
   );
 };

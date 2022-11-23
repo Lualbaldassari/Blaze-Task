@@ -16,10 +16,18 @@ app.use(express.json());
 app.use(cors());
 
 
+
+/* --------------- Products Route --------------- */
+
+
+
+
 app.get("/", (req, res) => {
   res.json("hello this is the backend!");
 });
 
+
+//Get all the products
 app.get("/products", (req, res) => {
   const q = "SELECT * FROM products";
   db.query(q, (err, data) => {
@@ -28,7 +36,7 @@ app.get("/products", (req, res) => {
   });
 });
 
-
+//Create a new product
 app.post("/products", (req, res) => {
   const q = "INSERT INTO products (`name`,`category`,`price`,`status`) VALUES (?)";
   const values = [
@@ -45,7 +53,7 @@ app.post("/products", (req, res) => {
   });
 });
 
-
+//Delete a product
 app.delete("/products/:id", (req,res) =>{
   const productId = req.params.id;
   const q =" DELETE FROM products WHERE id = ?"
@@ -58,6 +66,7 @@ app.delete("/products/:id", (req,res) =>{
 
 })
 
+//Update a product
 app.put("/products/:id", (req, res) => {
   const productId = req.params.id;
   const q = " UPDATE  products SET `name`= ?, `category` = ?, `price`= ?, `status` = ? WHERE id = ? ";
@@ -80,6 +89,7 @@ app.put("/products/:id", (req, res) => {
 
 
 
+/* --------------- Orders Route --------------- */
 
 
 
