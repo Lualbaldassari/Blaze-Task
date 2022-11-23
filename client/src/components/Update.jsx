@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import s from "../style/Update.module.css";
 
 
@@ -36,7 +36,7 @@ const Update = () => {
 
   return (
     <div className={s.form}>
-      <h1>Update a new product</h1>
+      <h1 className={s.header}>Update a new product</h1>
       <input
         type="text"
         placeholder="name"
@@ -62,6 +62,11 @@ const Update = () => {
         name="status"
       />
       <button className={s.btn} onClick={handleClick}>Update</button>
+       <Link to="/products" >
+          <button className={s.btn}>
+            Back
+          </button>
+        </Link>
     </div>
   );
 };

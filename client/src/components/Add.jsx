@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import s from "../style/Update.module.css"
 
 const Add = () => {
   const [product, setProduct] = useState({
@@ -29,8 +30,8 @@ const Add = () => {
   } 
 
   return (
-    <div>
-      <h1>Add a new product</h1>
+    <div className={s.form}>
+      <h1 className={s.header}>Add a new product</h1>
       <input
         type="text"
         placeholder="name"
@@ -50,12 +51,17 @@ const Add = () => {
         name="price"
       />
       <input
-        type="text" 
+        type="text"
         placeholder="status"
         onChange={handleChange}
         name="status"
       />
-      <button onClick={handleClick}>Add</button>
+      <button className={s.btn} onClick={handleClick}>
+        Add
+      </button>
+      <Link to="/products">
+        <button className={s.btn}>Back</button>
+      </Link>
     </div>
   );
 }
