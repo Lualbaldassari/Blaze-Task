@@ -95,19 +95,19 @@ app.get("/orders", (req, res) => {
 });
 
 
-app.post("orders", (req, res) => {
+app.post("/orders", (req, res) => {
   const q =
-    "INSERT INTO orders (`consumer`,`status`,`date`,`total`,`actions`) VALUES (?)";
+    "INSERT INTO orders (`consumer`,`status`,`date`,`total`) VALUES (?)";
+
   const values = [
     req.body.consumer,
     req.body.status,
     req.body.date,
     req.body.total,
-    req.body.actions,
   ];
 
   db.query(q, [values], (err, data) => {
-    if (err) return res.json(console.log);
+    if (err) return res.json(err);
     return res.json("The order has been created successfully");
   });
 });
