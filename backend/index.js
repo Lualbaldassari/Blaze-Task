@@ -17,7 +17,13 @@ app.use(cors());
 
 
 
-/* --------------- Products Route --------------- */
+/* -------------------------------------------------------------------------- */
+/*                               PRODUCTS ROUTE                               */
+/* -------------------------------------------------------------------------- */
+
+
+
+
 
 
 
@@ -27,7 +33,7 @@ app.get("/", (req, res) => {
 });
 
 
-//Get all the products
+/* -------------------------- Get all the products -------------------------- */
 app.get("/products", (req, res) => {
   const q = "SELECT * FROM products";
   db.query(q, (err, data) => {
@@ -36,7 +42,7 @@ app.get("/products", (req, res) => {
   });
 });
 
-//Create a new product
+/* -------------------------- Create a new product -------------------------- */
 app.post("/products", (req, res) => {
   const q = "INSERT INTO products (`name`,`category`,`price`,`status`) VALUES (?)";
   const values = [
@@ -53,7 +59,7 @@ app.post("/products", (req, res) => {
   });
 });
 
-//Delete a product
+/* ---------------------------- Delete a product ---------------------------- */
 app.delete("/products/:id", (req,res) =>{
   const productId = req.params.id;
   const q =" DELETE FROM products WHERE id = ?"
@@ -66,7 +72,7 @@ app.delete("/products/:id", (req,res) =>{
 
 })
 
-//Update a product
+/* ---------------------------- Update a product ---------------------------- */
 app.put("/products/:id", (req, res) => {
   const productId = req.params.id;
   const q = " UPDATE  products SET `name`= ?, `category` = ?, `price`= ?, `status` = ? WHERE id = ? ";
@@ -89,13 +95,15 @@ app.put("/products/:id", (req, res) => {
 
 
 
-/* --------------- Orders Route --------------- */
+/* -------------------------------------------------------------------------- */
+/*                                Orders Route                                */
+/* -------------------------------------------------------------------------- */
 
 
 
 
 
-
+/* ----------------------------- Get all orders ----------------------------- */
 app.get("/orders", (req, res) => {
   const q = "SELECT * FROM orders";
   db.query(q, (err, data) => {
@@ -104,7 +112,7 @@ app.get("/orders", (req, res) => {
   });
 });
 
-
+/* --------------------------- Create a new order --------------------------- */
 app.post("/orders", (req, res) => {
   const q =
     "INSERT INTO orders (`consumer`,`status`,`date`,`total`) VALUES (?)";
@@ -121,6 +129,40 @@ app.post("/orders", (req, res) => {
     return res.json("The order has been created successfully");
   });
 });
+
+
+/* ----------------------------- Delete an order ----------------------------- */
+app.delete("/orders/:id", (req, res) => {
+  const orderId = req.params.id;
+  const q = " DELETE FROM orders WHERE id = ?";
+
+  db.query(q, [orderId], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("Order has been deleted successfully");
+  });
+});
+
+
+
+/* ----------------------------- Update an order ---------------------------- */
+app.put("/orders/:id", (req, res) => {
+  const orderId = req.params.id;
+  const q =
+    " UPDATE  orders SET `consumer`= ?, `status` = ?, `date`= ?, `total` = ? WHERE id = ? ";
+
+  const values = [
+    req.body.consumer,
+    req.body.status,
+    req.body.date,
+    req.body.total,
+  ];
+
+  db.query(q, [...values, orderId], (err, data) => {
+    if (err) return res.json(err);
+    return res.json("The order has been updated successfully");
+  });
+});
+
 
 
 
