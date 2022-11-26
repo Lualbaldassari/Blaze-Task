@@ -130,6 +130,24 @@ app.post("/orders", (req, res) => {
   });
 });
 
+app.get("/orders/:id", (req, res) => {
+
+  const orderId = req.params.id;
+  const q = "SELECT * FROM orders WHERE id = ?";
+   
+
+  db.query(q, [orderId],(err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
+
+
+
+
+
+
 
 /* ----------------------------- Delete an order ----------------------------- */
 app.delete("/orders/:id", (req, res) => {

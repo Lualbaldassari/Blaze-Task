@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import s from "../style/Update.module.css";
 
 
+
+
 const Update = () => {
   const [product, setProduct] = useState({
     name: "",

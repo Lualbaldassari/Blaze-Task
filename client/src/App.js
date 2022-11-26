@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 import Add from "./components/Add";
 import AddOrder from "./components/AddOrder";
+import Details from "./components/Details";
 import LandingPage from "./components/LandingPage";
 import Orders from "./components/Orders";
 import Products from "./components/Products";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/addOrder/" element={<AddOrder />} />
           <Route path="/updateOrder/:id" element={<UpdateOrder />} />
+          <Route path="/orders/:id" element={<Details />} />
         </Routes>
       </BrowserRouter>
     </div>
