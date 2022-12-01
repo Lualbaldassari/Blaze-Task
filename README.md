@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="200" src="https://www.fractal.com.pe/img/fractal-logo.png" />
+  <img height="50" src="https://www.fractal.com.pe/img/fractal-logo.png" />
 </p>
 
 # Blaze - Basic Crud Task
