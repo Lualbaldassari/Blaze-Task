@@ -2,7 +2,7 @@ import express from "express";
 import mysql from "mysql";
 import cors from "cors"
 import {pool} from './db.js';
-import { PORT } from "./config.js";
+import { DB_PORT, PORT } from "./config.js";
 
 
 const app = express();
@@ -188,6 +188,6 @@ app.put("/orders/:id", (req, res) => {
 
 
 
-app.listen(PORT, ()=>{
+app.listen(DB_PORT, ()=>{
     console.log("Connected to backend!")
 })
