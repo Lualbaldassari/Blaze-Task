@@ -1,6 +1,8 @@
 import express from "express";
 import mysql from "mysql";
 import cors from "cors"
+import {pool} from './db.js';
+
 
 const app = express();
 
@@ -22,16 +24,16 @@ app.use(cors());
 /* -------------------------------------------------------------------------- */
 
 
-
-
-
-
-
-
 app.get("/", (req, res) => {
   res.json("hello this is the backend!");
 });
 
+app.get("/ping", async (req, res) => {
+  const [result] = await pool.query(`SELECT "hello world" as RESULT`);
+  console.log(result); 
+  res.json(result[0])
+  
+});
 
 /* -------------------------- Get all the products -------------------------- */
 app.get("/products", (req, res) => {
