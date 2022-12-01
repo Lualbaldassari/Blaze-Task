@@ -2,6 +2,7 @@ import express from "express";
 import mysql from "mysql";
 import cors from "cors"
 import {pool} from './db.js';
+import { PORT } from "./config.js";
 
 
 const app = express();
