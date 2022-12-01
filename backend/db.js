@@ -8,3 +8,5 @@ export const pool = await createPool({
   port: DB_PORT,
   database: DB_NAME,
 });
+
+// "start": "nodemon index.js"
